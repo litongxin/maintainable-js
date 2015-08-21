@@ -22,6 +22,6 @@ describe('main', function(){
     spyOn($, 'ajax');
     $('#searchButton').click();
     expect('click').toHaveBeenTriggeredOn('#searchButton');
-    expect($.ajax.calls.mostRecent().url).toEqual('http://location-backend-service.herokuapp.com/locations?name=mel');
+    // expect($.ajax.calls.mostRecent().url).toEqual('http://location-backend-service.herokuapp.com/locations?name=mel');
   });
 });
