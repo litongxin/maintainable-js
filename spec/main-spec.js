@@ -5,10 +5,12 @@ describe('main', function(){
     jasmine.getFixtures().fixturesPath = 'base/spec/fixtures';
     loadFixtures('myfixture.html');
     jasmine.Ajax.install();
-    jasmine.Ajax.stubRequest('http://location-backend-service.herokuapp.com/locations?name=mel')
-                .andReturn({
-                    responseText: 'location response'
-                });
+    jasmine.Ajax.stubRequest(
+      'http://location-backend-service.herokuapp.com/locations?name=mel'
+    ).andReturn
+      ({
+          responseText: 'location response'
+      });
   });
 
   afterEach(function() {

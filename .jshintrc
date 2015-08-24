@@ -14,7 +14,7 @@
     "trailing": true,
     "maxparams": 5,
     "maxcomplexity": 10,
-    "maxlen": 80,
+    "maxlen": 120,
     "asi": true,
     "loopfunc": true,
     "browser": true,

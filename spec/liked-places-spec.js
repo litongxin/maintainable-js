@@ -7,7 +7,7 @@ describe('liked places', function(){
 
   it('should add one liked place when give the name ', function(){
       var likedPlaces = new LikedPlaces();
-      likedPlaces.add("AMSTERDAM");
+      likedPlaces.add('AMSTERDAM');
       expect($('li').length).toBe(2);
   });
 });
