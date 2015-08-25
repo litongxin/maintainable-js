@@ -15,8 +15,12 @@ var SearchFormView = Backbone.View.extend({
     var that = this;
     var locationInput = $('#locationInput').val();
     var requestUrl = "http://location-backend-service.herokuapp.com/locations?name="+locationInput;
-    $.get(requestUrl, function(data){
-      that.model.set('results', data);
+    $.get(requestUrl, function(datas){
+      formatResults = [];
+      _.each(datas, function(data, index){
+        formatResults.push({"id":index, "name": data.name, "description": data.description, "like": false });
+      });
+      that.model.set('results', formatResults);
     }).fail(function() {
       Console.log("Request fails!");
     });

@@ -21,13 +21,18 @@
                <div class="panel large-12 columns">
                  <h5><%= result.name %></h5>
                  <h6><%= result.description %></h6>
-                 <a href="#" class="like button tiny right">Like</a>
+                 <span style="display: none;"><%= result.id%></span>
+                 <a href="#" class="like button tiny right <%= result.like ? 'unLike': '' %>"><%= result.like ? 'UnLike': 'Like' %></a>
               </div>
              <% }); %>
        </script>
        <script type="text/template" id="like-items-template">
             <%_.each(likes, function(like){ %>
-                <li class="like"><%= like.name %></li>
+                <li class="like">
+                  <span class="like-item"><%= like.name %></span>
+                  <span class="like-id" style="display: none"><%= like.resultId %></span>
+                  <a class="remove-like">X</a>
+                </li>
             <% }); %>
        </script>
         <title>Third Locations</title>

@@ -51,6 +51,11 @@ ul {
     padding: 8px 12px;
     border-radius: 2px;
 }
+#likedPlaces li a{
+    margin-right: 10px;
+    float: right;
+    color: #000000;
+}
 
 #searchResults h5 {
   text-transform: uppercase;
@@ -67,4 +72,8 @@ ul {
 #searchResults .panel {
   border-radius: 2px;
   border: none;
+}
+
+#searchResults .panel .unLike {
+    background-color: #CCC;
 }

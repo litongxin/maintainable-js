@@ -1,7 +1,6 @@
 function App(){
   var searchResults = new SearchResults();
   var likedPlaces = new LikedPlaces();
-  searchResults.handler();
   this.sender = function(){
     $('#searchButton').click(function(){
       var locationInput = $('#locationInput').val();
@@ -13,13 +12,21 @@ function App(){
   }
   this.addLike = function(){
     $(document).on('like', function(e, name){
-      likedPlaces.add(name);
+      var alreadyInLikedPlaces = _.find($('#likedPlaces li'), function(list) { return list.textContent == name})
+      if(!alreadyInLikedPlaces) {
+        likedPlaces.add(name);
+      }
     });
+  }
+
+  App.prototype.liston = function(){
+    searchResults.handler();
+    this.sender();
+    this.addLike();
   }
 }
 
-$(document).ready(function(){
+$(function(){
   var app = new App();
-  app.sender();
-  app.addLike();
+  app.liston();
 });
