@@ -76,4 +76,5 @@ ul {
 
 #searchResults .panel .unLike {
     background-color: #CCC;
+    pointer-events: none;
 }
