@@ -1,1 +1,2 @@
-jasmine.getFixtures().fixturesPath = 'base/spec/fixtures';
+jasmine.getFixtures().fixturesPath =
+  'base/' + jasmine.getFixtures().fixturesPath;

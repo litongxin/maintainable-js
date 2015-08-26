@@ -3,7 +3,6 @@ var LikeItemsView = Backbone.View.extend({
     this.resultModel = resultModel;
     this.likeModel = likeModel;
     this.likeModel.bind('change:likes', _.bind(this.render, this));
-    this.template = $('#like-items-template').html();
   },
 
   events: {
@@ -30,10 +29,8 @@ var LikeItemsView = Backbone.View.extend({
   },
 
   render: function() {
-    var compiled = _.template(this.template);
-    var html = compiled(this.likeModel.toJSON());
-    this.$el.html(html);
-
+    var myTemplate = Handlebars.compile($('#like-items-template').html());
+    this.$el.html(myTemplate(this.likeModel.toJSON()));
     return this.$el;
   }
 });

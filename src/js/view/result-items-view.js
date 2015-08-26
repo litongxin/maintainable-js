@@ -3,7 +3,6 @@ var ResultItemsView = Backbone.View.extend({
     this.resultModel = resultModel;
     this.likeModel = likeModel;
     this.resultModel.bind('change:results', _.bind(this.render, this));
-    this.template = $('#result-items-template').html();
   },
 
   events: {
@@ -30,10 +29,8 @@ var ResultItemsView = Backbone.View.extend({
   el: '#resultItems',
 
   render: function() {
-    var compiled = _.template(this.template);
-    var html = compiled(this.resultModel.toJSON());
-    this.$el.html(html);
-
+    var myTemplate = Handlebars.compile($('#result-items-template').html());
+    this.$el.html(myTemplate(this.resultModel.toJSON()));
     return this.$el;
   }
 });

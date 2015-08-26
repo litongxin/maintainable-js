@@ -1,84 +1,91 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 
-        <link rel="stylesheet" href="src/css/normalize.css" title="" type="" />
-        <link rel="stylesheet" href="src/css/foundation.css" title="" type="" />
-        <link rel="stylesheet" href="src/css/style.css">
-        <script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
-        <script type="text/javascript" src="vendor/underscore/underscore.js"></script>
-        <script type="text/template" id="search-form">
-          <div  class="large-9 medium-9 columns">
-            <input type="text" id="locationInput" value="" placeholder="Type a location name to search"/>
-          </div>
-          <div  class="large-3 medium-3 columns">
-              <input type="button" class="submit button tiny" id="searchButton" value="search" />
-          </div>
-        </script>
-        <script type="text/template" id="result-items-template">
-             <%_.each(results, function(result){ %>
-               <div class="panel large-12 columns">
-                 <h5><%= result.name %></h5>
-                 <h6><%= result.description %></h6>
-                 <span style="display: none;"><%= result.id%></span>
-                 <a href="#" class="like button tiny right <%= result.like ? 'unLike': '' %>"><%= result.like ? 'UnLike': 'Like' %></a>
-              </div>
-             <% }); %>
-       </script>
-       <script type="text/template" id="like-items-template">
-            <%_.each(likes, function(like){ %>
-                <li class="like">
-                  <span class="like-item"><%= like.name %></span>
-                  <span class="like-id" style="display: none"><%= like.resultId %></span>
-                  <a class="remove-like">X</a>
-                </li>
-            <% }); %>
-       </script>
-        <title>Third Locations</title>
-    </head>
-    <body>
-      <div class="contain-to-grid">
-        <nav class="top-bar" data-topbar>
+  <link rel="stylesheet" href="src/css/normalize.css" title="" type=""/>
+  <link rel="stylesheet" href="src/css/foundation.css" title="" type=""/>
+  <link rel="stylesheet" href="src/css/style.css">
+  <script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="vendor/underscore/underscore.js"></script>
+  <script type="text/javascript" src="vendor/handlebars/handlebars.min.js"></script>
 
-        </nav>
+  <script type="text/template" id="search-form">
+    <div class="large-9 medium-9 columns">
+      <input type="text" id="locationInput" value="" placeholder="Type a location name to search"/>
+    </div>
+    <div class="large-3 medium-3 columns">
+      <input type="button" class="submit button tiny" id="searchButton" value="search"/>
+    </div>
+  </script>
+  <script type="text/template" id="result-items-template">
+    {{#each results}}
+      <div class="panel large-12 columns">
+        <h5>{{ name }} </h5>
+        <h6>{{ description }}</h6>
+        <span style="display: none;">{{ id }}</span>
+        {{#if like}}
+          <a href="#" class="like button tiny right unLike">UnLike</a>
+        {{else}}
+          <a href="#" class="like button tiny right like">Like</a>
+        {{/if}}
       </div>
+    {{/each}}
+  </script>
+  <script type="text/template" id="like-items-template">
+    {{#each likes}}
+      <li class="like">
+        <span class="like-item">{{ name }}</span>
+        <span class="like-id" style="display: none">{{ resultId }}</span>
+        <a class="remove-like">X</a>
+      </li>
+    {{/each}}
+  </script>
+  <title>Third Locations</title>
+</head>
+<body>
+<div class="contain-to-grid">
+  <nav class="top-bar" data-topbar>
 
-         <div id="container">
-             <div class="row">
-                 <div id="searchForm">
-                 </div>
-             </div>
+  </nav>
+</div>
 
-            <div class="row">
-              <hr class="large-12 columns" />
-            </div>
+<div id="container">
+  <div class="row">
+    <div id="searchForm">
+    </div>
+  </div>
 
-            <div class="row">
+  <div class="row">
+    <hr class="large-12 columns"/>
+  </div>
 
-              <div id="searchResults" class="large-8 medium-8 columns">
-                  <h4>Search results</h4>
-                  <div id="resultItems">
-                  </div>
-              </div>
+  <div class="row">
 
-              <div id="likedPlaces"  class="large-4 medium-4 columns">
-                  <h4>Places I liked</h4>
-                  <nav>
-                      <ul id="likesItems">
-                      </ul>
-                  </nav>
-              </div>
+    <div id="searchResults" class="large-8 medium-8 columns">
+      <h4>Search results</h4>
 
-            </div>
-         </div>
-     <script type="text/javascript" src="vendor/backbone/backbone.js"></script>
+      <div id="resultItems">
+      </div>
+    </div>
 
-     <script type="text/javascript" src="src/js/model/result-model.js"></script>
-     <script type="text/javascript" src="src/js/model/like-model.js"></script>
-     <script type="text/javascript" src="src/js/view/search-form-view.js"></script>
-     <script type="text/javascript" src="src/js/view/result-items-view.js"></script>
-     <script type="text/javascript" src="src/js/view/like-items-view.js"></script>
-     <script type="text/javascript" src="src/js/server.js"></script>
-    </body>
+    <div id="likedPlaces" class="large-4 medium-4 columns">
+      <h4>Places I liked</h4>
+      <nav>
+        <ul id="likesItems">
+        </ul>
+      </nav>
+    </div>
+
+  </div>
+</div>
+<script type="text/javascript" src="vendor/backbone/backbone.js"></script>
+
+<script type="text/javascript" src="src/js/model/result-model.js"></script>
+<script type="text/javascript" src="src/js/model/like-model.js"></script>
+<script type="text/javascript" src="src/js/view/search-form-view.js"></script>
+<script type="text/javascript" src="src/js/view/result-items-view.js"></script>
+<script type="text/javascript" src="src/js/view/like-items-view.js"></script>
+<script type="text/javascript" src="src/js/server.js"></script>
+</body>
 </html>

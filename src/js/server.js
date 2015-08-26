@@ -7,12 +7,7 @@ $(function() {
       "like": false
    }
   ];
-  var likeData = [
-    {
-      "name":"Liked place",
-      "id": "88888888"
-    }
-  ];
+  var likeData = [];
   var resultModel = new ResultItem({'results': resultData});
   var likeModel = new LikeItem({'likes':likeData});
   var searchForm = new SearchFormView(resultModel);
