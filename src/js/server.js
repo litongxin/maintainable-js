@@ -1,7 +1,15 @@
+var $ = require('jquery');
+
+var ResultItem = require('./model/result-model');
+var LikeItem = require('./model/like-model');
+var SearchFormView = require('./view/search-form-view');
+var ResultItemsView = require('./view/result-items-view');
+var LikeItemsView = require('./view/like-items-view');
+
 $(function() {
   var resultData = [
     {
-      "id": 99999999,
+      "id": "result_9999",
       "name": "Place of interesting",
       "description": "Description of the place",
       "like": false
@@ -14,7 +22,7 @@ $(function() {
   var resultItems = new ResultItemsView(resultModel, likeModel);
   var likeItems = new LikeItemsView(resultModel, likeModel);
 
-  searchForm.render();
-  resultItems.render();
-  likeItems.render();
+  $('#searchForm').append(searchForm.render());
+  $('#resultItems').append(resultItems.render());
+  $('#likeItems').append(likeItems.render());
 });

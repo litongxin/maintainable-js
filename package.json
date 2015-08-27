@@ -8,10 +8,25 @@
     "gulp": "^3.9.0",
     "gulp-jshint": "^1.11.2",
     "jasmine-core": "^2.3.4",
+    "jquery": "^2.1.4",
     "jshint-stylish": "^2.0.1",
     "karma": "^0.13.3",
     "karma-chrome-launcher": "^0.2.0",
-    "karma-jasmine": "^0.3.6"
+    "karma-jasmine": "^0.3.6",
+    "backbone": "^1.2.2",
+    "underscore": "~1.8.3",
+    "browserify": "^11.0.1",
+    "handlebars": "^3.0.3",
+    "hbsfy": "^2.2.1",
+    "karma-browserify": "^4.3.0",
+    "karma-jasmine": "^0.3.6",
+    "lodash": "^3.10.1",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "browserify": {
+    "transform": [
+    "hbsfy"
+    ]
   },
   "dependencies": {},
   "scripts": {

@@ -1,7 +1,12 @@
-var SearchFormView = Backbone.View.extend({
+var Backbone = require('backbone');
+var $ = require('jquery');
+var _ = require('underscore');
+
+var template = require('../template/search-form-template.hbs');
+
+module.exports = Backbone.View.extend({
   initialize: function(model) {
     this.model = model;
-    this.template = $('#search-form').html();
   },
 
   events: {
@@ -17,19 +22,17 @@ var SearchFormView = Backbone.View.extend({
     var requestUrl = "http://location-backend-service.herokuapp.com/locations?name="+locationInput;
     $.get(requestUrl, function(datas){
       formatResults = [];
-      _.each(datas, function(data, index){
-        formatResults.push({"id":index, "name": data.name, "description": data.description, "like": false });
+      _.each(datas, function(data){
+        formatResults.push({"id": _.uniqueId('result_'), "name": data.name, "description": data.description, "like": false });
       });
       that.model.set('results', formatResults);
     }).fail(function() {
       Console.log("Request fails!");
     });
-    // this.model.trigger('change:results', results);
   },
 
   render: function() {
-    var compiled = _.template(this.template);
-    var html = compiled();
+    var html = template;
     this.$el.html(html);
 
     return this.$el;

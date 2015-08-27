@@ -1,0 +1,12 @@
+{{#each results}}
+  <div class="panel large-12 columns">
+    <h5>{{ name }} </h5>
+    <h6>{{ description }}</h6>
+    <span style="display: none;">{{ id }}</span>
+    {{#if like}}
+      <a href="#" class="like button tiny right unLike">UnLike</a>
+    {{else}}
+      <a href="#" class="like button tiny right like">Like</a>
+    {{/if}}
+  </div>
+{{/each}}

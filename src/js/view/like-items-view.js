@@ -1,4 +1,11 @@
-var LikeItemsView = Backbone.View.extend({
+var Backbone = require('backbone');
+var $ = require('jquery');
+var _ = require('underscore');
+
+var template = require('../template/like-results-template.hbs');
+
+
+module.exports = Backbone.View.extend({
   initialize: function(resultModel, likeModel) {
     this.resultModel = resultModel;
     this.likeModel = likeModel;
@@ -18,19 +25,21 @@ var LikeItemsView = Backbone.View.extend({
     var id = $(e.target).parent().find('.like-id').text();
     var likes = that.likeModel.get('likes');
     var results = that.resultModel.get('results');
-    likes.pop({"name": item});
+    this.likeModel.trigger('change:likes', likes);
+    likes = _.without(likes, _.findWhere(likes, {id: id}));
+    this.likeModel.set('likes',likes);
     _.each(results,function(result){
       if(result.id == id){
         result.like = false;
       }
     });
-    this.likeModel.trigger('change:likes', likes);
+    this.likeModel.trigger('change:likes', []);
     this.resultModel.trigger('change:results', results);
   },
 
   render: function() {
-    var myTemplate = Handlebars.compile($('#like-items-template').html());
-    this.$el.html(myTemplate(this.likeModel.toJSON()));
+    var html = template(this.likeModel.toJSON())
+    this.$el.html(html);
     return this.$el;
   }
 });
