@@ -13,7 +13,6 @@
     "karma": "^0.13.3",
     "karma-chrome-launcher": "^0.2.0",
     "karma-jasmine": "^0.3.6",
-    "backbone": "^1.2.2",
     "underscore": "~1.8.3",
     "browserify": "^11.0.1",
     "handlebars": "^3.0.3",
@@ -21,11 +20,16 @@
     "karma-browserify": "^4.3.0",
     "karma-jasmine": "^0.3.6",
     "lodash": "^3.10.1",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "react": "^0.13.3",
+    "react-tools": "^0.13.3",
+    "reactify": "^1.1.1",
+    "rewire": "^2.3.4",
+    "rewireify": "^0.2.2"
   },
   "browserify": {
     "transform": [
-    "hbsfy"
+      "reactify"
     ]
   },
   "dependencies": {},

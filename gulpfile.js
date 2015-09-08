@@ -16,16 +16,26 @@ gulp.task('js', function() {
         .pipe(jshint.reporter('jshint-stylish'));
 });
 
-gulp.task('browserify', function () {
-  return browserify('src/js/server.js')
-    .bundle()
-    .pipe(source('bundle.js'))
-    .pipe(gulp.dest('build/js'));
+// gulp.task('browserify', function () {
+//   return browserify('src/js/server.js')
+//     .bundle()
+//     .pipe(source('bundle.js'))
+//     .pipe(gulp.dest('build/js'));
+// });
+
+gulp.task('browserify', function() {
+    return browserify('src/js/componentize.js')
+        .bundle()
+        .on('error', function(err){
+          console.log(err.message);
+          this.emit('end');
+        })
+        .pipe(source('bundle.js'))
+        .pipe(gulp.dest('build/js'));
 });
 
 gulp.task('watch', function() {
-  gulp.watch(paths.scripts, ['scripts']);
-  gulp.watch(paths.images, ['images']);
+  gulp.watch('src/js/**/*', ['browserify']);
 });
 
 
