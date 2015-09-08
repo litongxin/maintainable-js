@@ -9,7 +9,7 @@ module.exports = React.createClass({
     return (
       <li className="like">
         {this.props.result.name}
-        <a onClick={this.handleChange}>X</a>
+        <a className="like-icon" onClick={this.handleChange}>X</a>
       </li>
     );
   }

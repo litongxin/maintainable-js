@@ -78,3 +78,8 @@ ul {
     background-color: #CCC;
     pointer-events: none;
 }
+
+#likedPlaces a.like-icon {
+  float: right;
+  margin-right: 20px;
+}
